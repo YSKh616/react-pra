@@ -6,7 +6,7 @@ function App() {
 
   const addTask = (e) => {
     e.preventDefault();
-    console.log("add task");
+    if (text === "") return;
     let copyTasks = [...tasks];
     copyTasks.push({ name: text, isCompleted: false });
     setTasks(copyTasks);
