@@ -1,21 +1,8 @@
 import { useState } from "react";
+import AddTask from "./components/AddTask";
 
 function App() {
-  const [text, setText] = useState("");
   const [tasks, setTasks] = useState([]);
-
-  const addTask = (e) => {
-    e.preventDefault();
-    if (text === "") return;
-    let copyTasks = [...tasks];
-    copyTasks.push({ name: text, isCompleted: false });
-    setTasks(copyTasks);
-    setText("");
-  };
-
-  const handleNewTask = (e) => {
-    setText(e.target.value);
-  };
 
   const handleUpdateTask = (index) => {
     const copyTasks = tasks.map((task, taskIndex) => {
@@ -30,16 +17,7 @@ function App() {
   return (
     <>
       <h1>TODO LIST</h1>
-      <form onSubmit={addTask}>
-        <label htmlFor="task-name">タスク名:</label>
-        <input
-          type="text"
-          id="task-name"
-          value={text}
-          onChange={handleNewTask}
-        />
-        <button type="submit">Add</button>
-      </form>
+      <AddTask tasks={tasks} setTasks={setTasks}></AddTask>
       <ul>
         {tasks.map((task, index) => (
           <li
