@@ -17,9 +17,13 @@ function App() {
     setText(e.target.value);
   };
 
-  const handleRemoveTask = (index) => {
-    const copyTasks = [...tasks];
-    copyTasks.splice(index, 1);
+  const handleUpdateTask = (index) => {
+    const copyTasks = tasks.map((task, taskIndex) => {
+      if (taskIndex === index) {
+        task.isCompleted = !task.isCompleted;
+      }
+      return task;
+    });
     setTasks(copyTasks);
   };
 
@@ -38,8 +42,15 @@ function App() {
       </form>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>
-            {task.name} <span onClick={() => handleRemoveTask(index)}>X</span>
+          <li
+            key={index}
+            style={
+              task.isCompleted === true
+                ? { textDecorationLine: "line-through" }
+                : {}
+            }
+          >
+            {task.name} <span onClick={() => handleUpdateTask(index)}>X</span>
           </li>
         ))}
       </ul>
