@@ -17,6 +17,12 @@ function App() {
     setText(e.target.value);
   };
 
+  const handleRemoveTask = (index) => {
+    const copyTasks = [...tasks];
+    copyTasks.splice(index, 1);
+    setTasks(copyTasks);
+  };
+
   return (
     <>
       <h1>TODO LIST</h1>
@@ -32,7 +38,9 @@ function App() {
       </form>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task.name}</li>
+          <li key={index}>
+            {task.name} <span onClick={() => handleRemoveTask(index)}>X</span>
+          </li>
         ))}
       </ul>
     </>
