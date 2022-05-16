@@ -5,6 +5,7 @@ import { useState, FormEvent } from "react";
 // };
 
 const AddTask = (props: any) => {
+  const { tasks, setTasks } = props;
   const [text, setText] = useState("");
 
   const handleNewTask = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,9 +15,9 @@ const AddTask = (props: any) => {
   const addTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (text === "") return;
-    let copyTasks = [...props.tasks];
+    let copyTasks = [...tasks];
     copyTasks.push({ name: text, isCompleted: false });
-    props.setTasks(copyTasks);
+    setTasks(copyTasks);
     setText("");
   };
 
