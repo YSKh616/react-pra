@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 
-const AddTask = ({ tasks, setTasks }) => {
+// type Props = {
+//   tasks: { name: string; isCompleted: boolean }[];
+// };
+
+const AddTask = (props: any) => {
   const [text, setText] = useState("");
 
-  const handleNewTask = (e) => {
+  const handleNewTask = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
-  const addTask = (e) => {
+  const addTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (text === "") return;
-    let copyTasks = [...tasks];
+    let copyTasks = [...props.tasks];
     copyTasks.push({ name: text, isCompleted: false });
-    setTasks(copyTasks);
+    props.setTasks(copyTasks);
     setText("");
   };
 
