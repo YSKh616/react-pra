@@ -2,14 +2,22 @@ import { useState } from "react";
 import AddTask from "./components/AddTask";
 import TodoList from "./components/TodoList";
 
+type Task = {
+  name: string;
+  isCompleted: boolean;
+};
+
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const updateTasks = (tasks: Task[]) => {
+    setTasks(tasks);
+  };
 
   return (
     <>
       <h1>TODO LIST</h1>
-      <AddTask tasks={tasks} setTasks={setTasks}></AddTask>
-      <TodoList tasks={tasks} setTasks={setTasks}></TodoList>
+      <AddTask tasks={tasks} updateTasks={updateTasks}></AddTask>
+      <TodoList tasks={tasks} updateTasks={updateTasks}></TodoList>
     </>
   );
 }

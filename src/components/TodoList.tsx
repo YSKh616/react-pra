@@ -1,5 +1,15 @@
-const TodoList = (props: any) => {
-  const { tasks, setTasks } = props;
+type Task = {
+  name: string;
+  isCompleted: boolean;
+};
+
+type Props = {
+  tasks: Task[];
+  updateTasks: (tasks: Task[]) => void;
+};
+
+const TodoList = (props: Props) => {
+  const { tasks, updateTasks } = props;
   const handleUpdateTask = (index: number) => {
     const copyTasks = tasks.map((task: any, taskIndex: number) => {
       if (taskIndex === index) {
@@ -7,7 +17,7 @@ const TodoList = (props: any) => {
       }
       return task;
     });
-    setTasks(copyTasks);
+    updateTasks(copyTasks);
   };
 
   return (

@@ -1,11 +1,17 @@
 import { useState, FormEvent } from "react";
 
-// type Props = {
-//   tasks: { name: string; isCompleted: boolean }[];
-// };
+type Task = {
+  name: string;
+  isCompleted: boolean;
+};
 
-const AddTask = (props: any) => {
-  const { tasks, setTasks } = props;
+type Props = {
+  tasks: Task[];
+  updateTasks: (tasks: Task[]) => void;
+};
+
+const AddTask = (props: Props) => {
+  const { tasks, updateTasks } = props;
   const [text, setText] = useState("");
 
   const handleNewTask = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +23,7 @@ const AddTask = (props: any) => {
     if (text === "") return;
     let copyTasks = [...tasks];
     copyTasks.push({ name: text, isCompleted: false });
-    setTasks(copyTasks);
+    updateTasks(copyTasks);
     setText("");
   };
 
