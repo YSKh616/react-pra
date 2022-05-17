@@ -7,7 +7,7 @@ type Task = {
   isCompleted: boolean;
 };
 
-function App() {
+const App = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const updateTasks = (tasks: Task[]) => {
     setTasks(tasks);
@@ -20,6 +20,6 @@ function App() {
       <TodoList tasks={tasks} updateTasks={updateTasks}></TodoList>
     </>
   );
-}
+};
 
 export default App;
