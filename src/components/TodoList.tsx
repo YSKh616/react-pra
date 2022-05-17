@@ -21,9 +21,10 @@ const TodoList = (props: Props) => {
   };
 
   return (
-    <ul className="list-disc">
+    <ul className="divide-y-2 divide-gray-100">
       {tasks.map((task: any, index: number) => (
         <li
+          className="p-3"
           key={index}
           style={
             task.isCompleted === true
