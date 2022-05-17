@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <h1>TODO LIST</h1>
+      <h1 className="text-3xl font-bold underline">TODO LIST</h1>
       <AddTask tasks={tasks} updateTasks={updateTasks}></AddTask>
       <TodoList tasks={tasks} updateTasks={updateTasks}></TodoList>
     </>

@@ -21,7 +21,7 @@ const TodoList = (props: Props) => {
   };
 
   return (
-    <ul>
+    <ul className="list-disc">
       {tasks.map((task: any, index: number) => (
         <li
           key={index}
